@@ -3,7 +3,7 @@ from odoo import models, fields, api
 
 
 class Persona(models.Model):
-    _name = 'todo.esports.persona'
+    _name = 'esports.persona'
     dni = fields.Text('DNI',required = True)
     nom = fields.Char('Nom',40,required = True)
     cognom1 = fields.Char('1er Cognom',40,required = True)
@@ -16,15 +16,16 @@ class Persona(models.Model):
     codiPostal = fields.Integer('Codi postal',required = True)
 
 class Jugador(models.Model):
-    _name = 'todo.esports.jugador'
+    _name = 'esports.jugador'
+    _inherit = 'esports.persona'
     sexe = fields.Selection('Home','Dona',required = True)
     dataNaix = fields.Date('Data naixement',required = True)
 
 class Posicio(models.Model):
-    _name = 'todo.esports.posicio'
+    _name = 'esports.posicio'
     posicio = fields.Selection('Porter','Extrem','Lateral','Central','Pivot')
 
 class Categoria(models.Model):
-    _name = 'todo.esports.categoria'
+    _name = 'esports.categoria'
     descripcio = fields.Selection('Menor M/F','Cadet M','Cadet F','Juvenil M','Juvenil F','Junior M','Junior F',
                                   'Adult M','Adult F')
